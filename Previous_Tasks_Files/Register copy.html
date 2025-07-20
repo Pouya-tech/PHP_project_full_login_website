@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
+    <title>Register form</title>
+</head>
+<body class="bg-gradient-to-l from-[#52357B] to-[#5459AC] font-vazir text-[#3e4d49]
+h-screen antialiased font-bold flex justify-center items-center">
+                <!-- container start -->
+    <section class="grid grid-cols-2 w-full max-w-2xl bg-slate-50 rounded-lg overflow-hidden">
+                  <!-- section right start -->
+                <div>
+                    <img class="w-full h-full object-cover" src="../image/pngtree-2-5d-blue-gradient-atmosphere-network-data-image_41608.jpg" alt="login">
+                </div>
+                  <!-- section right end -->
+                  <!-- section left start -->
+                <form action="./Register.php" method="POST" class="grid gap-12 content-start p-10">
+                  <!-- section left header start -->
+                   <header>
+                    <h1 class="text-2xl font-bold">فرم ثبت نام</h1>
+                   </header>
+                  <!-- section left header end -->
+                   <!-- section 1 left input start -->
+                   <div class="grid gap-12">
+                      <div class="relative w-full">
+                  <input name="name" id="name" type="text" placeholder=" "
+                    class="peer w-full border-b border-slate-300 bg-transparent pt-4 pb-1 text-sm outline-none
+                    focus:border-slate-700"
+                  />
+                  <label
+                    for="name"
+                    class="absolute right-0 bottom-0 p-1 text-base text-slate-500 cursor-text transition-all duration-200
+                    peer-placeholder-shown:bottom-0 peer-placeholder-shown:text-base
+                    peer-focus:bottom-6 peer-focus:text-sm peer-focus:text-slate-700
+                    peer-not-placeholder-shown:bottom-6 peer-not-placeholder-shown:text-sm peer-not-placeholder-shown:text-slate-700
+                    peer-not-placeholder-shown:bg-none">نام
+                  </label>
+                      </div>
+                    <!-- section 1 left input end -->
+                   </div>
+                    <div class="grid gap">
+                    <!-- section 2 left input start -->
+                    <div class="relative w-full">
+                      <input name="password" id="password" type="password" placeholder=" "
+                    class="peer w-full border-b border-slate-300 bg-transparent pt-4 pb-1 text-sm outline-none
+                     focus:border-slate-700">
+                    <label for="password" class="absolute right-0 bottom-0 p-1 text-base text-slate-500 cursor-text transition-all duration-200
+                    peer-placeholder-shown:bottom-0 peer-placeholder-shown:text-base
+                    peer-focus:bottom-6 peer-focus:text-sm peer-focus:text-slate-700
+                    peer-not-placeholder-shown:bottom-6 peer-not-placeholder-shown:text-sm peer-not-placeholder-shown:text-slate-700
+                    ">پسورد</label>
+                    </div>
+                  <!-- section 2 left input end -->
+                  </div>
+                  <!-- section 3 left input start -->
+                    <div class="relative w-full">
+                      <input name="email" type="email" id="email" placeholder=" "
+                    class="peer w-full border-b border-slate-300 bg-transparent pt-4 pb-1 text-sm outline-none
+                     focus:border-slate-700">
+                    <label for="email" class="absolute right-0 bottom-0 p-1 text-base text-slate-500 cursor-text transition-all duration-200
+                    peer-placeholder-shown:bottom-0 peer-placeholder-shown:text-base
+                    peer-focus:bottom-6 peer-focus:text-sm peer-focus:text-slate-700
+                    peer-not-placeholder-shown:bottom-6 peer-not-placeholder-shown:text-sm peer-not-placeholder-shown:text-slate-700
+                    ">ایمیل</label>
+                    </div>
+                  <!-- section 3 left input end -->
+                  </div>
+                                       <!-- section 4 left input start -->
+                      <div class="relative w-full">
+                        <input name="phone" type="number" id="phone"
+                        class="peer w-full border-b border-slate-300 bg-transparent pt-4 pb-1 text-sm outline-none
+                     focus:border-slate-700">
+                        <label for="phone" class="absolute right-0 bottom-0 p-1 text-base text-slate-500 cursor-text transition-all duration-200
+                    peer-placeholder-shown:bottom-0 peer-placeholder-shown:text-base
+                    peer-focus:bottom-6 peer-focus:text-sm peer-focus:text-slate-700
+                    peer-not-placeholder-shown:bottom-6 peer-not-placeholder-shown:text-sm peer-not-placeholder-shown:text-slate-700
+                    ">شماره تلفن</label>
+                      </div>
+                    <!-- section 4 left input end -->
+                   </div>
+                   <!-- footer left input start -->
+                    <footer>
+                      <input type="hidden" name="action_type" value="register">
+                      <button class="py-2.5 active:scale-105 px-8 rounded-full font-bold cursor-pointer bg-green-500 hover:bg-green-600
+                      text-white transition-all">ارسال</button>
+                    </footer>
+                   <!-- footer left input end -->
+                </form>
+                  <!-- section left end -->
+    </section>
+                <!-- container end -->
+</body>
+</html>

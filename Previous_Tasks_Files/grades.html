@@ -1,0 +1,57 @@
+<?php
+session_start();
+include("db.php");
+
+// بررسی لاگین بودن
+if (!isset($_SESSION['user'])) {
+  header("Location: login.php");
+  exit;
+}
+
+$user_id = $_SESSION['user']['id'];
+
+// گرفتن نمرات این دانش‌آموز
+$query = "SELECT * FROM grades WHERE student_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$grade = $result->fetch_assoc();
+?>
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نمرات من</title>
+  <link rel="stylesheet" href="./output.css">
+</head>
+<body class="bg-slate-100 font-vazir text-right text-slate-900 p-10">
+  <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-xl p-8 text-xl space-y-6">
+    <h1 class="text-3xl font-bold text-center text-fuchsia-800">نمرات من</h1>
+
+    <?php if ($grade): ?>
+    <table class="w-full text-center border border-slate-300">
+      <thead class="bg-slate-200">
+        <tr>
+          <th class="border p-3">نمره میان‌ترم</th>
+          <th class="border p-3">نمره پایان‌ترم</th>
+          <th class="border p-3">نمره کل</th>
+          <th class="border p-3">آخرین بروزرسانی</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="border p-3"><?= $grade['midterm_score'] ?></td>
+          <td class="border p-3"><?= $grade['final_score'] ?></td>
+          <td class="border p-3"><?= $grade['total_score'] ?></td>
+          <td class="border p-3"><?= $grade['updated_at'] ?></td>
+        </tr>
+      </tbody>
+    </table>
+    <?php else: ?>
+      <p class="text-red-600 text-center">❗ نمره‌ای برای شما ثبت نشده است.</p>
+    <?php endif; ?>
+  </div>
+</body>
+</html>

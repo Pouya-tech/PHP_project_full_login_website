@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./output.css">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
+        <title>login</title>
+    </head>
+    <body
+        class="bg-gradient-to-l from-[#52357B] to-[#5459AC] font-vazir text-[#3e4d49]
+h-screen font-bold antialiased flex justify-center items-center">
+        <!--       container start -->
+        <section
+            class="grid grid-cols-1 w-full max-w-xl bg-slate-50 rounded-lg overflow-hidden">
+            <!--  section mid start -->
+            <form id="smsForm" action="./process.php" method="POST"
+                class="grid gap-12 content-start p-10">
+                <input type="hidden" name="id" value="1">
+                <!-- section mid header start -->
+                <input type="hidden" name="hiddenField" id="hiddenField" value="">
+                <header>
+                    <h1 class="text-center text-2xl font-bold ">خوش امدید</h1>
+                </header>
+                <!-- section mid header end -->
+                <!-- section 1 left input start -->
+                <div class="grid gap-10">
+                    <div class="relative w-full">
+                        <input name="name" id="name" type="text" placeholder=" "
+
+                            class="peer w-full border-b border-slate-300 bg-transparent pt-4 pb-1 text-sm outline-none
+                    focus:border-slate-700" />
+
+                        <label
+                            for="name"
+                            class="absolute right-0 bottom-0 p-1 text-base text-slate-500 cursor-text transition-all duration-200
+                    peer-placeholder-shown:bottom-0 peer-placeholder-shown:text-base
+                    peer-focus:bottom-6 peer-focus:text-sm peer-focus:text-slate-700
+                    peer-not-placeholder-shown:bottom-6 peer-not-placeholder-shown:text-sm peer-not-placeholder-shown:text-slate-700
+                    peer-not-placeholder-shown:bg-none">نام
+                        </label>
+                    </div>
+                    <div class="relative w-full">
+                        <input name="password" id="password" type="password"
+                            placeholder=" "
+                            class="peer w-full border-b border-slate-300 bg-transparent pt-4 pb-1 text-sm outline-none
+                    focus:border-slate-700" />
+                        <label
+                            for="password"
+                            class="absolute right-0 bottom-0 p-1 text-base text-slate-500 cursor-text transition-all duration-200
+                    peer-placeholder-shown:bottom-0 peer-placeholder-shown:text-base
+                    peer-focus:bottom-6 peer-focus:text-sm peer-focus:text-slate-700
+                    peer-not-placeholder-shown:bottom-6 peer-not-placeholder-shown:text-sm peer-not-placeholder-shown:text-slate-700
+                    peer-not-placeholder-shown:bg-none">پسورد
+                        </label>
+                    </div>
+                    <!-- </form>
+                <form id="smsForm" action="./process.php" method="POST" -->
+                    <div class="relative w-full">
+                        <input type="number" name="phone" id="phone" type="number" placeholder=" "
+
+                            class="peer w-full border-b border-slate-300 bg-transparent pt-4 pb-1 text-sm outline-none
+                    focus:border-slate-700" />
+                        <label
+                            for="phone"
+                            class="absolute right-0 bottom-0 p-1 text-base text-slate-500 cursor-text transition-all duration-200
+                    peer-placeholder-shown:bottom-0 peer-placeholder-shown:text-base
+                    peer-focus:bottom-6 peer-focus:text-sm peer-focus:text-slate-700
+                    peer-not-placeholder-shown:bottom-6 peer-not-placeholder-shown:text-sm peer-not-placeholder-shown:text-slate-700
+                    peer-not-placeholder-shown:bg-none">شماره تلفن
+                        </label>
+                    </div>
+                    <!-- کد تایید -->
+                    <div class="relative w-full flex">
+                        <input name="code" id="code" type="number"
+                            placeholder=" "
+                            class="peer w-auto border-b border-slate-300 bg-transparent pt-4 pb-1 text-sm outline-none
+                    focus:border-slate-700" />
+                        <label
+                            for="code"
+                            class="absolute right-0 bottom-0 p-1 text-base text-slate-500 cursor-text transition-all duration-200
+                    peer-placeholder-shown:bottom-0 peer-placeholder-shown:text-base
+                    peer-focus:bottom-6 peer-focus:text-sm peer-focus:text-slate-700
+                    peer-not-placeholder-shown:bottom-6 peer-not-placeholder-shown:text-sm peer-not-placeholder-shown:text-slate-700
+                    peer-not-placeholder-shown:bg-none">کد ارسال شده
+                        </label>
+                        <div class="relative w-full">
+                            <!-- <input type="hidden" name="id" value="SMS"> -->
+
+                            <button
+                                class="py-2 mb-0 active:scale-105 px-8 rounded-full font-bold cursor-pointer bg-green-600
+                        hover:bg-green-700 text-white transition-all duration-200"
+                               >ارسال کد
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- section 1 left input end -->
+                <!-- <form action="./process.php" method="POST" class="grid gap-8 content-start px-10 pt-2"> -->
+                <div class="grid gap-5">
+                    <!-- footer 1 start -->
+
+                    <footer>
+                        <label for="iagree"
+                            class="flex items-center space-x-2 p-0">
+                            <input type="checkbox"
+                                class="form-checkbox text-green-600" required>
+                            <span>شرایط و ضوابط سایت را می پذیرم</span>
+                        </label>
+                    </footer>
+                    <!-- footer 1 end -->
+                    <!-- footer 2 start -->
+                    <footer>
+                        <label for="iwant"
+                            class="flex items-center space-x-2">
+                            <input type="checkbox"
+                                class="form-checkbox text-green-600">
+                            <span>اخبار را میخواهم دریافت کنم</span>
+                            <!-- footer 2 end -->
+                        </footer>
+                    <!-- footer 3 start -->
+                    <footer>
+                        <input type="hidden" name="action_type" value="login">
+                        <button
+                            class="py-2 mb-3 active:scale-105 px-8 rounded-full font-bold cursor-pointer bg-green-600
+                            hover:bg-green-700 text-white transition-all duration-200">ورود
+                        </button>
+                    </footer>
+                </div>
+                <!-- footer 3 end -->
+            </form>
+            <!-- </form end> -->
+        </section>
+        <script>
+                    function sensSMS(e) {
+    e.preventDefault();
+    const phoneInput = document.getElementById('phone');
+    const idInput = document.querySelector('input[name="id"]').value;
+
+    if (phoneInput.value.trim() === "") {
+        alert('فیلد شماره تلغن الزامی است');
+        return;
+    }
+    const formData = new FormData();
+    formData.append('phone', phoneInput.value);
+    formData.append('id', idInput);
+    formData.append('action_type', 'SMS');
+
+    fetch('./process.php', { method: 'POST', body: formData })
+        .then(response => response.text())
+        .then(data => {
+            if (data.includes('SUCCESS')) {
+                alert('کد با موفقیت ارسال شد✔');
+            } else {
+                alert('❌' + data);
+            }
+            // اگه المنت با آیدی result توی فرم داری اینو می‌ذاری، اگه نداری می‌تونی حذفش کنی
+            // document.getElementById('result').innerText = data;
+        })
+        .catch(error => console.error('❌خطا: ', error));
+    }
+    // بررسی فیلد مخفی قبل از ارسال فرم
+    document.getElementById('smsForm').addEventListener('submit', function (e) {
+        const nameInput = document.getElementById('name').value.trim();
+        const passwordInput = document.getElementById('password').value.trim();
+        const phoneInput = document.getElementById('phone').value.trim();
+
+        if (nameInput === '' || passwordInput === '' || phoneInput === '') {
+            e.preventDefault();
+            alert ('پر کردن تمامی فیلد ها الزامیست❌');
+        }
+    });
+        </script>
+        <!-- <script>
+                                function goTodataboard(e) {
+                                    e.preventDefault();
+
+                                    window.location.href = './databoard.php';
+                                }
+                            </script> -->
+        <!--       container end -->
+    </body>
+</html>
