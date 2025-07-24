@@ -15,7 +15,7 @@ $_SESSION['phone_number'] = $phone_number;
 // محاصبه تاریخ ارسال کد
 $expires_at = date('Y-m-d H:i:s', time() + 60);
 // ذخیره در دیتا بیس
-$query = "INSERT INTO otp_codes (phone_number , code , expires_at) VALUES ('$phone_number' ,'$token' , '$expires_at')";
+$query = "INSERT INTO users (OTP) VALUES ()";
 mysqli_query($conn , $query);
 // ارسال پیامک
 require 'vendor/autoload.php';
