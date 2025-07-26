@@ -26,8 +26,9 @@ if (isset($_GET['ExplainId'])) {
 
   $Data = $Haslink->fetch(PDO::FETCH_OBJ);
 
-  $Explains = $Data->Explains;
+
   $ShowList = false;
+  $Explains = $Data->Explains;
   // var_dump($EndpointRedirectLink['Endpoint_Link']);
 }
 ?>
