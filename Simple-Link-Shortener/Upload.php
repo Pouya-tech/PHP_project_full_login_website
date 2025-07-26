@@ -1,50 +1,62 @@
 <?php
 require_once("./loader.php");
+if (isset($_POST["submit"])) {
 
-$target_dir = "Uploads/";
-$File_name = "format-" . time() . "-" . basename($_FILES["fileToUpload"]["name"]);
-$target_file = $target_dir . $File_name;
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 5000000) {
-  echo "Sorry, your file is too large.";
-  $uploadOk = 0;
-}
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-  echo "Sorry, your file was not uploaded.";
-  // if everything is ok, try to upload file
-} else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-
-    $sql = "INSERT INTO files SET name=? , Create_Time=? ";
-
-    $result = $conn->prepare($sql);
-
-    $result->bindValue(1, $File_name);
-    $result->bindValue(2, time());
-
-    $result->execute();
+  $target_dir = "Uploads/";
+  $File_name = "format-" . time() . "-" . basename($_FILES["fileToUpload"]["name"]);
+  $target_file = $target_dir . $File_name;
+  $uploadOk = 1;
+  $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+  // Check file size
+  if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+  }
+  // Check if $uploadOk is set to 0 by an error
+  if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
   } else {
-    echo "Sorry, there was an error uploading your file.";
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+
+      $sql = "INSERT INTO files SET name=? , Create_Time=? ";
+
+      $result = $conn->prepare($sql);
+
+      $result->bindValue(1, $File_name);
+      $result->bindValue(2, time());
+
+      $result->execute();
+    } else {
+      echo "Sorry, there was an error uploading your file.";
+    }
   }
 }
+// delete a file
+if (isset($_GET['delete'])) {
 
+  $sql = "DELETE FROM files WHERE id=?";
+
+  $result = $conn->prepare($sql);
+
+  $result->bindValue(1, $_GET['delete']);
+
+  $result->execute();
+
+  header("Location: ./Upload.php");
+}
 // get all files
 
 $sql = "SELECT * FROM files";
 
-$result = $conn->query($sql);
+$result = $conn->prepare($sql);
 
 $result->execute();
 
 $files = $result->fetchALL();
 
 // var_dump($files);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -137,7 +149,7 @@ $files = $result->fetchALL();
 
 <body>
   <div>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
+    <form action="./Upload.php" method="post" enctype="multipart/form-data">
       تصویر خود را انتخاب کنید:
       <input class="cursor-pointer" type="file" name="fileToUpload" id="fileToUpload">
       <br>
@@ -149,27 +161,29 @@ $files = $result->fetchALL();
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">نام یا اسم فایل</th>
+          <th scope="col">تصویر / اسم فایل</th>
           <th scope="col">عملیات</th>
         </tr>
       </thead>
       <tbody>
-        <?php foreach ($files as $key => $Item):  ?>
+        <?php foreach ($files as $key => $Item):
+          $check = getimagesize(filename: "Uploads/" . $Item["name"]);
+          // var_dump($check);
+        ?>
           <tr>
             <th scope="row"><?= ++$key ?></th>
-            <td><?= $Item["name"] ?></td>
-            <td><a href="Uploads/<?= $Item["name"] ?>" target="_blank" class="btn btn-primary">دانلود</a><a href="" class="btn btn-danger">حذف</a></td>
+
+            <?php if ($check) {   ?>
+              <td> <img src="Uploads/<?= $Item["name"] ?>"  height="80px" style="border-radius: 5px;" alt=""></td>
+            <?php } else {  ?>
+              <td><?= $Item["name"] ?></td>
+            <?php  } ?>
+            <td><a href="Uploads/<?= $Item["name"] ?>" download class="btn btn-primary">دانلود</a><a href="?delete=<?= $Item["id"] ?>" class="btn btn-danger">حذف</a></td>
           </tr>
         <?php endforeach;  ?>
 
       </tbody>
     </table>
-
-
-
-
-
-
 
   </div>
 </body>
